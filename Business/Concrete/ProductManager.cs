@@ -23,5 +23,15 @@ namespace Business.Concrete
             //If'ler mif'ler çalıştıktan sonra aşağıdakini çalıştıracak iş katmanı
             return _ProductDal.GetAll();
         }
+
+        public List<Product> GetAllByCategory(int id)
+        {
+            return _ProductDal.GetAll(p => p.CategoryId == id);
+        }
+
+        public List<Product> GetByUnitPrice(decimal min, decimal max)
+        {
+            return _ProductDal.GetAll(p => p.UnitPrice >= min && p.UnitPrice <= max);
+        }
     }
 }
